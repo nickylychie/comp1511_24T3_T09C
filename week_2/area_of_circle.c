@@ -3,9 +3,20 @@
 
 #include <stdio.h>
 
+#define PI 3.1415
+
 int main(void) {
 
-	// TODO
+	// scan in a radius input
+	double radius;
+	printf("Enter a radius: ");
+	scanf("%lf", &radius);
+
+	// calculate the area
+	double area = PI * radius * radius;
+
+	// print out our values
+	printf("The area is %lf\n", area);
 
 	return 0;
 }
