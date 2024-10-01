@@ -6,10 +6,11 @@
 int main(void) {
     
   char letter;
-  scanf(" %c", &letter);
+  // int scanf_returns = scanf(" %c", &letter);
 
-  while ( ??? ) {
-    printf("You have entered: %d\n", letter);
+  while (scanf(" %c", &letter) == 1) {
+    printf("You have entered: %c\n", letter);
+    // scanf_returns = scanf(" %c", &letter);
   }
 
 	return 0;

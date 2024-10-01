@@ -12,13 +12,18 @@ int main(void) {
     // o o o o 
     // o o o o 
     // o o o o 
-
     int x = 0;
-    while (x < SIZE) {
-        printf("o ");
-        x++;
+    int y = 0;
+    while (y < SIZE) {
+        x = 0;
+        while (x < SIZE) {
+            printf("o ");
+            x++;
+        }
+        printf("\n");
+        y++;
     }
-    printf("\n");
+
 
     return 0;
 }

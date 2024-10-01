@@ -8,13 +8,13 @@
 #define ADDED_COST 0.5
 #define BASE_COST 4.5
 
-// TODO: Define an enum `coffee_type` that stores the different types of coffees 
-// the shop sells. These are: LATTEE, CAPPUCCINO, ESPRESSO, AMERICANO & MATCHA.
+/ TODO: Define an enum `coffee_type` that stores the different types of coffees 
+/ the shop sells. These are: LATTEE, CAPPUCCINO, ESPRESSO, AMERICANO & MATCHA.
 
-// TODO: Define a struct `coffee` that stores 
-// 1. the coffee type (an enum)
-// 2. the number of sugars 
-// 3. the size of a coffee 
+/ TODO: Define a struct `coffee` that stores 
+/ 1. the coffee type (an enum)
+/ 2. the number of sugars 
+/ 3. the size of a coffee 
 
 int main(void) {
     // TODO: Initalise a variable for the struct

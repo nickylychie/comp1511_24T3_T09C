@@ -4,8 +4,29 @@
 #include <stdio.h>
 
 // Define an enum for types of animals
+enum animal_types {
+  DOG,
+  CAT,
+  RAT,
+  SHARK,
+  CRAB,
+  GIRAFFE,
+  ORANGUTAN
+}
+
+enum colour {
+  RED,
+  BLUE,
+  YELLOW
+}
 
 // Define a struct for pets
+struct pet {
+  int lifespan;
+  double tameability;
+  enum animal_type animal;
+  enum colour c;
+}
 
 int main(void) {
     
