@@ -2,7 +2,8 @@
 //
 // Written by YOUR-NAME (YOUR-ZID) on TODAYS-DATE
 //
-// This program is a simple bubble tea store used to teach functions
+// This program is a simple bubble tea store 
+// used to teach functions
 
 #include <stdio.h>
 
@@ -57,34 +58,9 @@ int main(void) {
     inventory.toppings = BASE_TOPPINGS;
 
     // Take the user's bubble tea order
-    struct bubble_tea order;
-    int type;
+    struct bubble_tea order = take_order();
 
-    printf("Enter bubble tea type (0: MILK TEA, 1: FRUIT TEA, 2: TARO MILK, "
-            "3: MATCHA LATTE): ");
-    scanf("%d", &type);
-    if (type == 0) {
-        order.type = MILK_TEA;
-    } else if (type == 1) {
-        order.type = FRUIT_TEA;
-    } else if (type == 2) {
-        order.type = TARO_MILK;
-    } else if (type == 3) {
-        order.type = MATCHA_LATTE;
-    }
-
-    printf("Enter topping (0: TAPIOCA PEARLS, 1: JELLY, 2: POPPING PEARLS, "
-            "3: ALOE VERA): ");
-    scanf("%d", &type);
-    if (type == 0) {
-        order.topping = TAPIOCA_PEARLS;
-    } else if (type == 1) {
-        order.topping = JELLY;
-    } else if (type == 2) {
-        order.topping = POPPING_PEARLS;
-    } else if (type == 3) {
-        order.topping = ALOE_VERA;
-    }
+    order = get_toppings(order);
 
     printf("Enter topping qty: ");
     scanf("%d", &order.topping_qty);
@@ -101,30 +77,7 @@ int main(void) {
     }
 
     // Calculate the cost
-    double total_cost = BASE_COST;
-
-    if (order.size == LARGE) {
-        total_cost += ADDED_COST;
-    }
-
-    if (order.type == MILK_TEA ||
-        order.type == TARO_MILK ||
-        order.type == MATCHA_LATTE) {
-        total_cost += ADDED_COST;
-    }
-
-    int count = 0;
-    while (count < order.topping_qty) {
-        total_cost += ADDED_COST;
-        count++;
-    }
-
-    // Print the final order and cost
-    printf("Order:\n");
-    printf("Type: %d\n", order.type);
-    printf("Topping Qty: %d\n", order.topping_qty);
-    printf("Size: %c\n", order.size);
-    printf("Total Cost: %.2lf\n", total_cost);
+    calculate_cost(order);
 
     // Update the stock after fulfilling the order
     if (order.size == LARGE) {
@@ -149,3 +102,67 @@ int main(void) {
 ////////////////////////////////////////////////////////////////////////////////
 
 // TODO: Write function definitions here
+
+struct bubble_tea take_order() {
+    struct bubble_tea order;
+    int type;
+
+    printf("Enter bubble tea type (0: MILK TEA, 1: FRUIT TEA, 2: TARO MILK, "
+            "3: MATCHA LATTE): ");
+    scanf("%d", &type);
+    if (type == 0) {
+        order.type = MILK_TEA;
+    } else if (type == 1) {
+        order.type = FRUIT_TEA;
+    } else if (type == 2) {
+        order.type = TARO_MILK;
+    } else if (type == 3) {
+        order.type = MATCHA_LATTE;
+    }
+
+    return order;
+}
+
+struct bubble_tea get_toppings(struct bubble_tea order) {
+    printf("Enter topping (0: TAPIOCA PEARLS, 1: JELLY, 2: POPPING PEARLS, "
+            "3: ALOE VERA): ");
+    scanf("%d", &type);
+    if (type == 0) {
+        order.topping = TAPIOCA_PEARLS;
+    } else if (type == 1) {
+        order.topping = JELLY;
+    } else if (type == 2) {
+        order.topping = POPPING_PEARLS;
+    } else if (type == 3) {
+        order.topping = ALOE_VERA;
+    }
+
+    return order;
+}
+
+void calculate_cost(struct bubble_tea order) {
+    double total_cost = BASE_COST;
+
+    if (order.size == LARGE) {
+        total_cost += ADDED_COST;
+    }
+
+    if (order.type == MILK_TEA ||
+        order.type == TARO_MILK ||
+        order.type == MATCHA_LATTE) {
+        total_cost += ADDED_COST;
+    }
+
+    int count = 0;
+    while (count < order.topping_qty) {
+        total_cost += ADDED_COST;
+        count++;
+    }
+
+    // Print the final order and cost
+    printf("Order:\n");
+    printf("Type: %d\n", order.type);
+    printf("Topping Qty: %d\n", order.topping_qty);
+    printf("Size: %c\n", order.size);
+    printf("Total Cost: %.2lf\n", total_cost);
+}
