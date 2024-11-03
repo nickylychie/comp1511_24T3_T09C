@@ -7,18 +7,35 @@
 #include "linked_lists.h"
 
 struct node *create_node(int data) {
-    // TODO
-    exit(1);
+    struct node *new_node = malloc(sizeof(struct node));
+    new_node->data = data;
+    new_node->next = NULL;
+
+    return new_node;
 }
 
 struct node *insert_head(struct node *head, int data) {
-    // TODO
-    exit(1);
+    struct node *new_node = create_node(data);
+
+    new_node->next = head;
+    return new_node;
 }
 
 struct node *insert_tail(struct node *head, int data) {
-    // TODO
-    exit(1);
+    struct node *new_node = create_node(data);
+
+    if (head == NULL) {
+        head = new_node;
+        return head;
+    }
+
+    struct node *current = head;
+    while (current->next != NULL) {
+        current = current->next;
+    }
+    current->next = new_node;
+
+    return head;
 }
 
 void print_list(struct node *head) {
